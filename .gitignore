@@ -13,3 +13,9 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# bin directory
+bin
+
+# Mac specific files
+.DS_Store
