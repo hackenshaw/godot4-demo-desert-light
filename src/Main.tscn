@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dtdv4se427gmh"]
+[gd_scene load_steps=35 format=3 uid="uid://dtdv4se427gmh"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_2gqxl"]
 [ext_resource type="Environment" uid="uid://cfk37fm4ah0d3" path="res://assets/resources/raffa_environment.tres" id="2_dhjut"]
@@ -40,44 +40,16 @@ particles_anim_loop = false
 proximity_fade_enabled = true
 proximity_fade_distance = 10.0
 
-[sub_resource type="Gradient" id="Gradient_acsdg"]
-offsets = PackedFloat32Array(0, 0.704819, 1)
-colors = PackedColorArray(1, 1, 1, 0.309804, 1, 1, 1, 0.523931, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_wjipk"]
-gradient = SubResource("Gradient_acsdg")
+[sub_resource type="QuadMesh" id="QuadMesh_522fc"]
+size = Vector2(0.06, 0.06)
 
 [sub_resource type="Gradient" id="Gradient_v83qe"]
 offsets = PackedFloat32Array(0, 0.471429, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_746p3"]
-gradient = SubResource("Gradient_v83qe")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rtma0"]
-lifetime_randomness = 0.7
-emission_shape = 3
-emission_box_extents = Vector3(25, 20, 40)
-direction = Vector3(0, 0, -1)
-spread = 10.0
-gravity = Vector3(0, 0, -4)
-initial_velocity_min = 0.1
-initial_velocity_max = 2.0
-scale_min = 0.7
-scale_max = 1.5
-color_ramp = SubResource("GradientTexture1D_746p3")
-color_initial_ramp = SubResource("GradientTexture1D_wjipk")
-turbulence_enabled = true
-turbulence_noise_strength = 20.0
-turbulence_noise_scale = 8.0
-turbulence_noise_speed = Vector3(0, 0, -1)
-turbulence_influence_min = 0.02
-turbulence_influence_max = 0.05
-turbulence_initial_displacement_min = 0.1
-turbulence_initial_displacement_max = 0.2
-
-[sub_resource type="QuadMesh" id="QuadMesh_522fc"]
-size = Vector2(0.06, 0.06)
+[sub_resource type="Gradient" id="Gradient_acsdg"]
+offsets = PackedFloat32Array(0, 0.704819, 1)
+colors = PackedColorArray(1, 1, 1, 0.309804, 1, 1, 1, 0.523931, 1, 1, 1, 1)
 
 [sub_resource type="FogMaterial" id="FogMaterial_rskpm"]
 albedo = Color(0.396078, 0.376471, 0.27451, 1)
@@ -139,40 +111,12 @@ shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/texture_albedo = SubResource("GradientTexture2D_iyliv")
 
+[sub_resource type="QuadMesh" id="QuadMesh_w2ma6"]
+size = Vector2(0.2, 0.2)
+
 [sub_resource type="Gradient" id="Gradient_asiuf"]
 offsets = PackedFloat32Array(0, 0.214286, 0.5, 0.774436, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.394205, 0.297227, 0.421053, 1, 0.54, 0.678, 1, 1, 0.475314, 0.281936, 0.5125, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xspw0"]
-gradient = SubResource("Gradient_asiuf")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bvwt3"]
-lifetime_randomness = 0.4
-emission_shape = 3
-emission_box_extents = Vector3(15, 20, 30)
-direction = Vector3(0, 1, 0)
-spread = 0.0
-gravity = Vector3(0, 10, -10)
-initial_velocity_min = 2.0
-initial_velocity_max = 6.0
-radial_accel_min = -40.0
-radial_accel_max = -40.0
-damping_min = 12.0
-damping_max = 14.0
-scale_min = 0.2
-scale_max = 0.8
-color = Color(1.14006, 2, 1.97015, 1)
-color_ramp = SubResource("GradientTexture1D_xspw0")
-turbulence_enabled = true
-turbulence_noise_scale = 9.44
-turbulence_noise_speed = Vector3(0.8, 0.2, 0.2)
-turbulence_noise_speed_random = 0.1
-turbulence_influence_min = 0.05
-turbulence_initial_displacement_min = 5.0
-turbulence_initial_displacement_max = 5.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_w2ma6"]
-size = Vector2(0.2, 0.2)
 
 [sub_resource type="Animation" id="Animation_ltq2f"]
 length = 0.001
@@ -505,15 +449,26 @@ directional_shadow_max_distance = 95.0
 
 [node name="TempleScene" parent="Scenery" instance=ExtResource("3_jw8rf")]
 
-[node name="SandParticle" type="GPUParticles3D" parent="Scenery"]
+[node name="SandParticle" type="CPUParticles3D" parent="Scenery"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43879, 19.4646, 13.9359)
 material_override = SubResource("StandardMaterial3D_8olmv")
 gi_mode = 0
 amount = 30000
 lifetime = 5.0
-visibility_aabb = AABB(-40, -40, -40, 80, 80, 80)
-process_material = SubResource("ParticleProcessMaterial_rtma0")
-draw_pass_1 = SubResource("QuadMesh_522fc")
+lifetime_randomness = 0.7
+fixed_fps = 30
+mesh = SubResource("QuadMesh_522fc")
+emission_shape = 3
+emission_box_extents = Vector3(25, 20, 40)
+direction = Vector3(0, 0, -1)
+spread = 10.0
+gravity = Vector3(0, 0, -4)
+initial_velocity_min = 0.1
+initial_velocity_max = 2.0
+scale_amount_min = 0.7
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_v83qe")
+color_initial_ramp = SubResource("Gradient_acsdg")
 
 [node name="FogVolume" type="FogVolume" parent="Scenery"]
 transform = Transform3D(0.516533, 0, 0.856267, 0, 1, 0, -0.856267, 0, 0.516533, 47.724, 1.55066, 50)
@@ -570,17 +525,30 @@ shadow_normal_bias = 2.817
 shadow_blur = 0.302
 omni_range = 15.0
 
-[node name="Fireflies" type="GPUParticles3D" parent="Scenery"]
+[node name="Fireflies" type="CPUParticles3D" parent="Scenery"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.88724, 11.0825, 0)
 material_override = SubResource("ShaderMaterial_7wlj5")
 cast_shadow = 0
 amount = 200
 lifetime = 3.0
+lifetime_randomness = 0.4
 fixed_fps = 60
-interpolate = false
-visibility_aabb = AABB(-100, -100, -100, 200, 200, 200)
-process_material = SubResource("ParticleProcessMaterial_bvwt3")
-draw_pass_1 = SubResource("QuadMesh_w2ma6")
+mesh = SubResource("QuadMesh_w2ma6")
+emission_shape = 3
+emission_box_extents = Vector3(15, 20, 30)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 10, -10)
+initial_velocity_min = 2.0
+initial_velocity_max = 6.0
+radial_accel_min = -40.0
+radial_accel_max = -40.0
+damping_min = 12.0
+damping_max = 14.0
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+color = Color(1.14006, 2, 1.97015, 1)
+color_ramp = SubResource("Gradient_asiuf")
 
 [node name="Audio" type="Node3D" parent="."]
 
