@@ -1,7 +1,7 @@
 # Desert Light - A Godot 4 demo (modified for macOS)
 This is a short demo and test for the Global Illumination (Voxel Gi) and Volumetric Fog. This forked version has xome modifications in the render settings to make it run decently on my M1 MacbookPro. (Not tested on any other hardware)
 
-[![Video Link](http://img.youtube.com/vi/-LR6Rjx0hAI/0.jpg)](http://www.youtube.com/watch?v=-LR6Rjx0hAI "Preview Video")
+[![Video Link](http://img.youtube.com/vi/SePBUHEYT9I/0.jpg)]([http://www.youtube.com/watch?v=-LR6Rjx0hAI](https://youtu.be/SePBUHEYT9I) "Preview Video")
 
 ## Controls 🎮
 <kbd>1</kbd> - Slow down Day Cycle speed
